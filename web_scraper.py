@@ -96,9 +96,9 @@ Email.send_email('Your Email here', 'Your subject',
 worksheet_elem = browser.find_element_by_xpath('/html/body/div[3]/form/input[8]').click()
 sleep(5)
 
-# CRN of Behavioral: 16577
+# Submit your CRN to the registration page
 crn_case_elem = browser.find_element_by_xpath('//*[@id="crn_id1"]')
-crn_case_elem.send_keys('16577')
+crn_case_elem.send_keys('someCRNnumber')
 submit_changes_elem = browser.find_element_by_xpath('/html/body/div[3]/form/input[19]').click()
 
 
