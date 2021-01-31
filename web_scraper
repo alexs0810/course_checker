@@ -10,7 +10,7 @@ from time import sleep
 from datetime import datetime
 import Email
 
-browser = webdriver.Firefox(executable_path='insert/webdriver/path/here')
+browser = webdriver.Firefox(executable_path='/Users/a_saussier/Documents/geckodriver')
 
 
 def seats_checker(username, password):
@@ -56,7 +56,7 @@ def seats_checker(username, password):
         # Click on winter 2021 semester
         winter_elem = browser.find_element_by_xpath('/html/body/div[3]/form/table/tbody/tr/td/select').click()
 
-        # Click on specific country from the dropdown
+        
         wait(browser, 5).until(EC.visibility_of_element_located(
             (By.XPATH,'/html/body/div[3]/form/table/tbody/tr/td/select/option[3]'))).click()
 
@@ -83,20 +83,26 @@ def seats_checker(username, password):
 
     return int(seats_remaining)
 
+username = input("Username: ")
+password = input("Password: ")
+available_seats = seats_checker(username, password)
 
-available_seats = seats_checker('username', 'password')
 print('Quick! Go register, there are ' + str(available_seats) + 'seats remaining!')
 
-#Make an Email class for this part
-Email.send_email('your_email', 'Subject',
-                 'Email content')
+
+Email.send_email('Your Email here', 'Your subject',
+                 'Someone dropped the class and there is availability. Go register ASAP!')
 
 worksheet_elem = browser.find_element_by_xpath('/html/body/div[3]/form/input[8]').click()
 sleep(5)
 
+# CRN of Behavioral: 16577
 crn_case_elem = browser.find_element_by_xpath('//*[@id="crn_id1"]')
-crn_case_elem.send_keys('')
+crn_case_elem.send_keys('16577')
 submit_changes_elem = browser.find_element_by_xpath('/html/body/div[3]/form/input[19]').click()
+
+
+
 
 
 
