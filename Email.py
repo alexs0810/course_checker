@@ -1,3 +1,6 @@
+#A script that connects to your mail server and sends an email when method is called
+#Used for a gmail server
+
 import smtplib
 
 
@@ -9,8 +12,8 @@ def send_email(recipient, subject, content):
 
     print(smtpObj.starttls())  # enable encryption for the connection - puts it in TLS mode
 
-    smtpObj.login('asaussier99@gmail.com', 'iimyjqtyhmjxrdow')  # uses application password
+    smtpObj.login('your@email', 'your_password')  # uses application password
 
-    smtpObj.sendmail('asaussier99@gmail.com', recipient, 'Subject:' + subject + '\n' + content)
+    smtpObj.sendmail('your@email', recipient, 'Subject:' + subject + '\n' + content)
 
     smtpObj.quit()
