@@ -10,7 +10,7 @@ from time import sleep
 from datetime import datetime
 import Email
 
-browser = webdriver.Firefox(executable_path='/Users/a_saussier/Documents/geckodriver')
+browser = webdriver.Firefox(executable_path='/Your/gecko/driver/location')
 
 
 def seats_checker(username, password):
@@ -68,7 +68,7 @@ def seats_checker(username, password):
                                                      ).click()
         click_course_search_elem = browser.find_element_by_xpath('/html/body/div[3]/form/input[17]').click()
         sleep(10)
-        # View sections of FINE 446 Behavioural finance
+        # View sections of class
         class_elem = browser.find_element_by_xpath('/html/body/div[3]/table[2]/tbody/tr[12]/td[3]/form/input[30]'
                                                    ).click()
 
@@ -79,7 +79,7 @@ def seats_checker(username, password):
         print(str(datetime.now()) + ' - SeatsRemaining = ' + seats_remaining)
         sleep(10)
 
-        # Go back to main menu to be able to start scraping loop again
+        # Go back to main menu to start scraping loop again
 
     return int(seats_remaining)
 
@@ -93,6 +93,7 @@ print('Quick! Go register, there are ' + str(available_seats) + 'seats remaining
 Email.send_email('Your Email here', 'Your subject',
                  'Someone dropped the class and there is availability. Go register ASAP!')
 
+#Automatic registration attempt
 worksheet_elem = browser.find_element_by_xpath('/html/body/div[3]/form/input[8]').click()
 sleep(5)
 
